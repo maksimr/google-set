@@ -1,12 +1,13 @@
 /* AUTHOR:  Maksim Ryzhikov
  * NAME:    BUZZ
  * VERSION: 0.1
+ * NOTE: THIS IS NOT OFFICIAL BOOKMARKLET
  */
 
 group.commands.add(["gbuzz", "buzz"], "Google BUZZ", function (args) {
 	var w = XPCNativeWrapper.unwrap(window.content.window);
 	with (w) {
-		eval("q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('http://www.google.com/reader/link?url='+encodeURIComponent(q)+'&title='+encodeURIComponent(p)+'&srcURL=&srcTitle=via%20here&snippet='+encodeURIComponent(d),'Google%20Buzz','toolbar=no,width=700,height=350'));");
+		eval("q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(window.open('http://www.google.com/buzz/post?url='+encodeURIComponent(q)+'&message='+encodeURIComponent(d),'addwindow','status=no,toolbar=no,width=700,height=350,resizable=yes'));");
 	}
 },
 {
