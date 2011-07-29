@@ -47,3 +47,34 @@ group.commands.add(["gplus", "gx"], "The Google Plus One Bookmarklet", function 
 {
 	argCount: "0"
 });
+
+
+/* AUTHOR: Maksim Ryzhikov
+ * NAME: GOOGLE-BOOKMARKS
+ * VERSION: 0.1
+ */
+
+group.commands.add(["gbookmarks", "gb"], "Create Google Bookmark", function (args) {
+	var w = XPCNativeWrapper.unwrap(window.content.window);
+	with (w) {
+		eval('(function(){var a=window,b=document,c=encodeURIComponent,d=a.open("http://www.google.com/bookmarks/mark?op=edit&output=popup&bkmk="+c(b.location)+"&title="+c(b.title),"bkmk_popup","left="+((a.screenX||a.screenLeft)+10)+",top="+((a.screenY||a.screenTop)+10)+",height=420px,width=550px,resizable=1,alwaysRaised=1");a.setTimeout(function(){d.focus()},300)})();');
+	}
+},
+{
+	argCount: "0"
+});
+
+/* AUTHOR: Maksim Ryzhikov
+ * NAME: GOOGLE-SUBSCRIBE
+ * VERSION: 0.1
+ */
+
+group.commands.add(["gsubscribe", "gs"], "Subscribe to a feed using Google Reader", function (args) {
+	var w = XPCNativeWrapper.unwrap(window.content.window);
+	with (w) {
+		eval("var b=document.body;if(b){void(z=document.createElement('script'));void(z.src='http://www.google.com/reader/ui/subscribe-bookmarklet.js');void(b.appendChild(z));}else{location='http://www.google.com/reader/view/feed/'+encodeURIComponent(location.href)}");
+	}
+},
+{
+	argCount: "0"
+});
